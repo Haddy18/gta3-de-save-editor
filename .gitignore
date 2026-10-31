@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+
+# leftovers from the GTASnP probes
+gt_*.html
+hdr.txt
+resp.html
+probe*.sav
+gtasnp_probe.sav
+
+# other slots of the local profile (the selftest only uses referencia-sf1)
+samples/referencia-sf7.sav
+samples/GTA3sf*.sav

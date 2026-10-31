@@ -1,0 +1,46 @@
+name: Build and publish the exe
+
+# Builds and attaches the .exe when a release is published
+# (gh release create vX.Y.Z). With workflow_dispatch it only builds
+# and leaves the binary as an artifact.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: python -m pip install --upgrade pyinstaller
+
+      - name: Selftest (checks against the saves in samples/)
+        run: python gta3_save_editor.py --selftest
+
+      - name: Build the .exe
+        run: pyinstaller GTA3-DE-Save-Editor.spec --noconfirm
+
+      - name: Upload the .exe to the release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: gh release upload "$GITHUB_REF_NAME" "dist/GTA3-DE-Save-Editor.exe" --clobber
+
+      - name: Leave the .exe as an artifact (manual build)
+        if: github.event_name != 'release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: GTA3-DE-Save-Editor
+          path: dist/GTA3-DE-Save-Editor.exe
