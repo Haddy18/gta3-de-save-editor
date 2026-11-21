@@ -58,6 +58,15 @@ Grab **`GTA3-DE-Save-Editor.exe`** from the
 [latest release](https://github.com/Haddy18/gta3-de-save-editor/releases/latest)
 and double-click it — no installation, no dependencies.
 
+## Project status
+
+This is a fan-made, community project and it still has **known limitations
+and bugs**. Coverage of mission and side-mission flags is not complete for
+every playthrough, some custom or modded saves may fail to load, and the
+achievement preparation is best-effort rather than guaranteed. The editor
+writes into your save file, so **always keep a backup** before pressing
+Save. It is provided as is, without warranty of any kind.
+
 ## Related projects
 
 Same family, other two games:
@@ -122,7 +131,27 @@ unlocked stay unlocked.
   everything by structure, so it isn't tied to one specific playthrough.
 - Single-player only. It edits your local save file; it does not touch
   online services. Still — always keep a backup.
-- Missing a feature or found a bug? Open an issue.
+- Missing a feature or found a bug? See [Contributing](#contributing).
+
+## Contributing
+
+This project is open to improvements — bug reports, fixes, new features and
+forks are all welcome:
+
+- **Found a bug?** Open an
+  [issue](https://github.com/Haddy18/gta3-de-save-editor/issues) with the
+  game version, the save slot and what you expected to happen.
+  Attaching a save that reproduces it (or the relevant offsets) helps
+  a lot.
+- **Want to fix it?** Fork the repository, make the change and send a **pull
+  request**. Small, focused PRs are the easiest to review.
+- **Forking is fine.** Derivative tools, translations and patches are
+  welcome; a link back to this repository is appreciated.
+- **No need to ask first.** There is no CLA and no fixed roadmap — the
+  project moves at the pace of whoever has time and interest.
+
+Testing a save from a different playthrough and reporting whether it loads
+correctly is already a useful contribution.
 
 ## For developers
 
